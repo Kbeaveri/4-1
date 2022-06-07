@@ -120,6 +120,23 @@ public:
 			}
 		}
 	}
+	void find(Iterator<T> i) {
+		Node<T>* node = first;
+		bool flag = true;
+		while (node->next != nullptr)
+		{
+			if (i == Iterator<T>(node))
+			{
+				cout << node->value;
+				flag = false;
+				break;
+			}
+			node = node->next;
+		}
+		if (!flag) {
+			cout << "I dont see";
+		}
+	}
 	/*	void delet(Iterator<T> i)
 		{
 			if (first == nullptr)

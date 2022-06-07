@@ -60,8 +60,9 @@ int main()
 					arr.push_back(AEROFLOT(number1, city1, type1));
 				}
 			}
-			sort(arr);
-			arr.printAll();
+		}
+		if (t == 2) {
+
 		}
 	}
 }
