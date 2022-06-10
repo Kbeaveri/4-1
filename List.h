@@ -125,9 +125,7 @@ public:
 		push_back(value);
 		Node<T>* node = last;
 		Node<T>* node2 = first;
-		int a = 0;
 		while (node2 != nullptr) {
-			a++;
 			if (node->value < node2->value) {
 					insert(Iterator<T>(node2), value);
 					pop_back();
@@ -146,13 +144,12 @@ public:
 			return;
 		}*/
 	}
-	template <typename b>
-	void Cout_find(b a) {
+	void Cout_find(const T& value) {
 		Node<T>* node = first;
 		bool flag = true;
 		while (node!= nullptr)
 		{
-			if (node ->value == a)
+			if (node ->value == value)
 			{
 				cout << node->value;
 				flag = false;
@@ -248,5 +245,13 @@ public:
 		}
 		pop_back();
 		return sum;
+	}
+	bool empty() {
+		if (first == nullptr) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 };

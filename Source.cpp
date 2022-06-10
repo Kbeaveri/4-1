@@ -34,6 +34,10 @@ int main()
 		cin >> t;
 		int n;
 		if (t == 1) {
+			if (!arr.empty()) {
+				arr.~List();
+				List <AEROFLOT> arr;
+			}
 			string name;
 			cout << "¬ведите им€ файла:"<<endl;
 			cin >> name;
@@ -53,6 +57,10 @@ int main()
 			}
 		}
 		if (t == 2) {
+			if (arr.empty()) {
+				arr.~List();
+				List <AEROFLOT> arr;
+			}
 			cin >> n;
 			for (int i = 0; i < n; i++) {
 				int number1;
@@ -64,9 +72,10 @@ int main()
 		}
 		if (t == 3) {
 			cout << "¬ведите название самолета";
-			char name;
+			string name;
 			cin >> name;
-			arr.Cout_find(name);
+			AEROFLOT p(0,"af",name);
+			arr.Cout_find(p);
 
 		}
 		if (t == 4) {
