@@ -8,19 +8,6 @@
 
 using namespace std;
 
-void sort(List <AEROFLOT>& arr) {
-	for (auto it = arr.begin(); it != arr.end(); ++it) {
-		AEROFLOT t = *it;
-		for (auto it2 = arr.begin(); it2 != arr.end(); ++it2) {
-			AEROFLOT t1 = *it2;
-			if (t > t1) {
-				AEROFLOT tmp = t;
-				t = t1;
-				t1 = tmp;
-			}
-		}
-	}
-}
 
 
 int main()
@@ -55,9 +42,11 @@ int main()
 				for (int i = 0; i < n; i++) {
 					int number1;
 					string city1;
-					string type1;
+					char type1;
 					fin >> number1 >> city1 >> type1;
 					arr.push_sort(AEROFLOT(number1, city1, type1));
+					cout << endl << endl << endl;
+					arr.printAll();
 				}
 			}
 		}
@@ -67,14 +56,17 @@ int main()
 			for (int i = 0; i < n; i++) {
 				int number1;
 				string city1;
-				string type1;
+				char type1;
 				cin >> number1 >> city1 >> type1;
 				arr.push_sort(AEROFLOT(number1, city1, type1));
 			}
 		}
 		if (t == 3) {
-
+			arr.printAll();
 		}
-		arr.printAll();
+		if (t == 4) {
+			arr.delet(1);
+			arr.printAll();
+		}
 	}
 }

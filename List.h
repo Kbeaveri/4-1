@@ -112,27 +112,30 @@ public:
 		{
 			Node<T>* newNode = new Node<T>(value);
 			first = newNode;
+			return;
 		}
-		if (last == nullptr)
+		/*if (last == nullptr)
 		{
 			Node<T>* newNode = new Node<T>(value);
 			last = newNode;
 			first->next = last;
 			last->previous = first;
 			return;
-		}
+		}*/
 		push_back(value);
 		Node<T>* node = last;
-		Node<T>* node2 = last->previous;
-		while (node2->previous != nullptr) {
-			if (node->value > node2->value) {
-				insert(Iterator<T>(node2), value);
-				pop_back();
-				return;
+		Node<T>* node2 = first;
+		int a = 0;
+		while (node2 != nullptr) {
+			a++;
+			if (node->value < node2->value) {
+					insert(Iterator<T>(node2), value);
+					pop_back();
+					return;
 			}
-			node2 = node2->previous;
+			node2 = node2->next;
 		}
-		if (node->value > first->value) {
+		/*if (node->value > first->value) {
 			insert(Iterator<T>(first->next), value);
 			pop_back();
 			return;
@@ -141,27 +144,25 @@ public:
 			insert(Iterator<T>(first), value);
 			pop_back();
 			return;
+		}*/
+	}
+	template <typename b>
+	void Cout_find(b a) {
+		Node<T>* node = first;
+		bool flag = true;
+		while (node->next != nullptr)
+		{
+			if (node ->value == a)
+			{
+				cout << node->value;
+				flag = false;
+			}
+			node = node->next;
+		}
+		if (!flag) {
+			cout << "I dont see";
 		}
 	}
-
-
-	/*void BubbleSort() {
-		Node<T>* tmp;
-		auto i = first;
-		auto j = first->next;
-		for (auto i = first; i != last->previous; i++) {
-			for (auto j = first->next; j != last; j++) {
-				Node<T>* node = i;
-				Node<T>* node2 = j;
-				if (node->value > node2->value) {
-					tmp = node;
-					node = node2;
-					node2 = tmp;
-				}
-
-			}
-		}
-	}*/
 
 	void printAll()//робит
 	{
@@ -171,7 +172,7 @@ public:
 		}
 		else {
 			Node<T>* node = first;
-			while (node->next != nullptr)//проход по всему списку
+			while (node != nullptr)//проход по всему списку
 			{
 				std::cout << node->value << " ";
 
@@ -179,50 +180,32 @@ public:
 			}
 		}
 	}
-	void find(Iterator<T> i) {
+	Iterator <T> find_it(int a) {
 		Node<T>* node = first;
-		bool flag = true;
-		while (node->next != nullptr)
-		{
-			if (i == Iterator<T>(node))
-			{
-				cout << node->value;
-				flag = false;
-				break;
-			}
+		bool flag = false;
+		for (int i = 0; i < a; i++) {
 			node = node->next;
 		}
+		return Iterator <T>(node);
 		if (!flag) {
 			cout << "I dont see";
 		}
 	}
-	/*	void delet(Iterator<T> i)
-		{
-			if (first == nullptr)
-			{
-				return;
+	void delet(int a)
+	{
+		Node<T>* node = first;
+		auto it = find_it(a);
+		while (node->next != nullptr) {
+			if (it == Iterator <T>(node)) {
+				node->previous->next = node->next;
+				node->next->previous = node->previous;
+				node->~Node();
+				break;
 			}
-			if (last == nullptr)
-			{
-				delete first;
-				return;
-			}
-			Node<T>* node = first;
-			while (node->next != nullptr)//проход по всему списку
-			{
-				if (i == Iterator<T>(node))
-				{
-
-					auto nextNode = node->previous->next;//запомнили адрес
-					auto prevNode = node->next->previous;
-
-
-					return;
-				}
-				node = node->next;//переход к след узлу
-			}
+			node = node->next;
 		}
-		*/
+	}
+		
 	void edit(Iterator<T> i, const T& value)//++робит
 	{
 		Node<T>* node = first;
@@ -237,9 +220,7 @@ public:
 		}
 	}
 	//поиск элемента по критерию
+	void Sort() {
 
-
-
-
-
+	}
 };

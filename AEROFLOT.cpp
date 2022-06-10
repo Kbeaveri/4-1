@@ -1,8 +1,8 @@
 #include "AEROFLOT.h"
 #include <iostream>;
+#include <typeinfo>;
 
-
-AEROFLOT::AEROFLOT(int number, string city, string type) {
+AEROFLOT::AEROFLOT(int number, string city, char type) {
 	this->number = number;
 	this->city = city;
 	this->type = type;
