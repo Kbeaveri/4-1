@@ -8,7 +8,11 @@
 
 using namespace std;
 
-
+//void find(List <AEROFLOT> &arr,string city,int n) {
+//	for (auto i = arr.begin(); i !=arr.end(); i++) {
+//		
+//	}
+//}
 
 int main()
 {
@@ -28,6 +32,7 @@ int main()
 		cout << " 8. Отредактировать элемент " << endl;
 		cout << " 9. Выход из программы" << endl;
 		cin >> t;
+		int n;
 		if (t == 1) {
 			string name;
 			cout << "Введите имя файла:"<<endl;
@@ -37,7 +42,6 @@ int main()
 				cout << "Файл не найден";
 			}
 			else {
-				int n;
 				fin >> n;
 				for (int i = 0; i < n; i++) {
 					int number1;
@@ -49,7 +53,6 @@ int main()
 			}
 		}
 		if (t == 2) {
-			int n;
 			cin >> n;
 			for (int i = 0; i < n; i++) {
 				int number1;
@@ -66,9 +69,13 @@ int main()
 			arr.Cout_find(name);
 
 		}
-		/*if (t == 4) {
-			arr.find(1, "Ярославль");
-		}*/
+		if (t == 4) {
+			cout << "Введите аэропорт и количество";
+			int kol;
+			string name;
+			cin >> kol >> name;
+			arr.find(kol, name);
+		}
 		if (t == 5) {
 			cout << "Введите номер элемента который ъотите удалить";
 			int a;

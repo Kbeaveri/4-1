@@ -66,5 +66,12 @@ public:
 			return *this;// currentNode = current->next;
 		}
 	}
+	/*Iterator& operator[](int index) {
+		Iterator it = begin() + index;
+		return *it;
+	}
+	Iterator begin() {
+		return myiterator(first);
+	}*/
 };
 

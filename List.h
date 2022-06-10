@@ -222,15 +222,15 @@ public:
 		delet(a);
 		push_sort(value);
 	}
-	//поиск элемента по критерию
 	void find(int kol,string  city) {
 		Node<T>* node = first;
-		while (node != last) {
+		while (node != nullptr) {
 			if (node->value == city) {
-				if (kol_find(city,node->value) > kol) {
+				if (kol_find(city,node->value) >= kol) {
 					cout << node->value;
 				}
 			}
+			node = node->next;
 		}
 	}
 	int kol_find(string  city, const T& value) {
@@ -244,6 +244,7 @@ public:
 					sum++;
 				}
 			}
+			node = node->next;
 		}
 		pop_back();
 		return sum;

@@ -23,9 +23,9 @@ public:
 	bool operator == (const string& a) {
 		return (a == city);
 	}
-	/*bool operator == (const char& a) {
-		return (a == type);
-	}*/
+	bool operator == (const AEROFLOT& p) {
+		return (p.type == type);
+	}
 	friend ostream& operator<<(ostream& os, const AEROFLOT& dt);
 	void Print_All();
 	AEROFLOT(int, string, string);
