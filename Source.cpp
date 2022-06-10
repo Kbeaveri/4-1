@@ -27,7 +27,7 @@ int main()
 {
 	List <AEROFLOT> arr;
 	setlocale(LC_ALL, "Russian");
-	cout << "¬ведите команду ,которую хотите выполнить:";
+	cout << "¬ведите команду ,которую хотите выполнить:"<<endl;
 	int t = 0;
 	while (t != 9)
 	{

@@ -106,7 +106,7 @@ public:
 		}
 	}
 
-	void push_sort(const T& value) 
+	void push_sort(const T& value)
 	{
 		if (first == nullptr)
 		{
@@ -118,25 +118,34 @@ public:
 			Node<T>* newNode = new Node<T>(value);
 			last = newNode;
 			first->next = last;
-			last->previous = first;	
+			last->previous = first;
 			return;
 		}
 		push_back(value);
-		BubbleSort();
-		/*Node<T>* node = last;
-		auto a = last;
-		while (a != first->next) {
-			if (node->value > node->previous->value) {
-				insert(a, value);
+		Node<T>* node = last;
+		Node<T>* node2 = last->previous;
+		while (node2->previous != nullptr) {
+			if (node->value > node2->value) {
+				insert(Iterator<T>(node2), value);
+				pop_back();
 				return;
 			}
-			node = node->previous;
-			a--;
-		}*/
+			node2 = node2->previous;
+		}
+		if (node->value > first->value) {
+			insert(Iterator<T>(first->next), value);
+			pop_back();
+			return;
+		}
+		else {
+			insert(Iterator<T>(first), value);
+			pop_back();
+			return;
+		}
 	}
 
 
-	void BubbleSort() {
+	/*void BubbleSort() {
 		Node<T>* tmp;
 		auto i = first;
 		auto j = first->next;
@@ -152,7 +161,7 @@ public:
 
 			}
 		}
-	}
+	}*/
 
 	void printAll()//робит
 	{
