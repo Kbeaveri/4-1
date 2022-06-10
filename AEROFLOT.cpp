@@ -11,7 +11,7 @@ AEROFLOT::AEROFLOT(int number, string city, string type) {
 
 ostream& operator<<(ostream& os, const AEROFLOT& dt)
 {
-	os << dt.city << ' ' << dt.number << ' ' << dt.type;
+	os << dt.number << ' ' << dt.city << ' ' << dt.type<<endl;
 	return os;
 }
 

@@ -2,6 +2,8 @@
 #include <iostream>
 #include "Node.h"
 #include "Iterator.h"
+
+using namespace std;
 template<class T>
 class List
 {
@@ -101,6 +103,54 @@ public:
 				return;
 			}
 			node = node->next;
+		}
+	}
+
+	void push_sort(const T& value) 
+	{
+		if (first == nullptr)
+		{
+			Node<T>* newNode = new Node<T>(value);
+			first = newNode;
+		}
+		if (last == nullptr)
+		{
+			Node<T>* newNode = new Node<T>(value);
+			last = newNode;
+			first->next = last;
+			last->previous = first;	
+			return;
+		}
+		push_back(value);
+		BubbleSort();
+		/*Node<T>* node = last;
+		auto a = last;
+		while (a != first->next) {
+			if (node->value > node->previous->value) {
+				insert(a, value);
+				return;
+			}
+			node = node->previous;
+			a--;
+		}*/
+	}
+
+
+	void BubbleSort() {
+		Node<T>* tmp;
+		auto i = first;
+		auto j = first->next;
+		for (auto i = first; i != last->previous; i++) {
+			for (auto j = first->next; j != last; j++) {
+				Node<T>* node = i;
+				Node<T>* node2 = j;
+				if (node->value > node2->value) {
+					tmp = node;
+					node = node2;
+					node2 = tmp;
+				}
+
+			}
 		}
 	}
 

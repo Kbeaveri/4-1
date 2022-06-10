@@ -57,12 +57,24 @@ int main()
 					string city1;
 					string type1;
 					fin >> number1 >> city1 >> type1;
-					arr.push_back(AEROFLOT(number1, city1, type1));
+					arr.push_sort(AEROFLOT(number1, city1, type1));
 				}
 			}
 		}
 		if (t == 2) {
+			int n;
+			cin >> n;
+			for (int i = 0; i < n; i++) {
+				int number1;
+				string city1;
+				string type1;
+				cin >> number1 >> city1 >> type1;
+				arr.push_sort(AEROFLOT(number1, city1, type1));
+			}
+		}
+		if (t == 3) {
 
 		}
+		arr.printAll();
 	}
 }
