@@ -150,7 +150,7 @@ public:
 	void Cout_find(b a) {
 		Node<T>* node = first;
 		bool flag = true;
-		while (node->next != nullptr)
+		while (node!= nullptr)
 		{
 			if (node ->value == a)
 			{
@@ -183,12 +183,14 @@ public:
 	Iterator <T> find_it(int a) {
 		Node<T>* node = first;
 		bool flag = false;
-		for (int i = 0; i < a; i++) {
+		for (int i = 0; i < a&&node!=nullptr; i++) {
 			node = node->next;
 		}
-		return Iterator <T>(node);
-		if (!flag) {
+		if (node == nullptr) {
 			cout << "I dont see";
+		}
+		else {
+			return Iterator <T>(node);
 		}
 	}
 	void delet(int a)
@@ -196,31 +198,54 @@ public:
 		Node<T>* node = first;
 		auto it = find_it(a);
 		while (node->next != nullptr) {
-			if (it == Iterator <T>(node)) {
+			if (it == Iterator <T>(node)&&a!=0) {
 				node->previous->next = node->next;
 				node->next->previous = node->previous;
 				node->~Node();
+				break;
+			}
+			if (a == 0) {
+				first = node->next;
 				break;
 			}
 			node = node->next;
 		}
 	}
 		
-	void edit(Iterator<T> i, const T& value)//++робит
+	void edit(const T& value,int a)//++робит
 	{
-		Node<T>* node = first;
-		while (node->next != nullptr)//проход по всему списку
-		{
-			if (i == Iterator<T>(node))
-			{
-				node->value = value;
-				return;
-			}
-			node = node->next;//переход к след узлу
+		if (a == 0) {
+			insert(Iterator<T> (first), value);
+			delet(1);
+			return;
 		}
+		delet(a);
+		push_sort(value);
 	}
 	//поиск элемента по критерию
-	void Sort() {
-
+	void find(int kol,string  city) {
+		Node<T>* node = first;
+		while (node != last) {
+			if (node->value == city) {
+				if (kol_find(city,node->value) > kol) {
+					cout << node->value;
+				}
+			}
+		}
+	}
+	int kol_find(string  city, const T& value) {
+		push_back(value);
+		int sum = 0;
+		Node<T>* node = first;
+		Node<T>* node2 = last;
+		while (node->next != nullptr) {
+			if (node->value == city) {
+				if (node2->value==node->value ) {
+					sum++;
+				}
+			}
+		}
+		pop_back();
+		return sum;
 	}
 };
